@@ -1,177 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;600&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
 
 body {
-  font-family: 'Lato', sans-serif;
-  background: linear-gradient(145deg, #3b2a1a, #5c4033, #b8996d);
-  background-attachment: fixed;
-  color: #f2e7c9;
-  text-align: center;
-  min-height: 100vh;
-}
-
-/* HEADER */
-header {
-  background: rgba(44, 33, 24, 0.85);
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-header h1 {
+  margin: 0;
   font-family: 'Cinzel', serif;
-  font-size: 2.2em;
-  color: #f2e7c9;
+  background-color: #f6f0e7;
+  background-image: url('images/paper-texture.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  color: #3b2b1a;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom: 2px solid #cbb68f;
+  background: rgba(255, 250, 240, 0.9);
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: #5e3b26;
+  margin: 0;
 }
 
 .subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1em;
-  color: #d9c28a;
+  font-size: 1.2rem;
+  color: #8c6b4f;
+  margin-top: 0.2rem;
+  letter-spacing: 2px;
 }
 
 nav {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
+
 nav a {
-  color: #f2e7c9;
+  color: #5e3b26;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 1rem;
   font-weight: 600;
   transition: color 0.3s ease;
 }
-nav a:hover,
-nav a.active {
-  color: #d1a05e;
+
+nav a:hover, nav a.active {
+  color: #b14f35;
 }
 
-/* INTRO SECTION */
-.intro {
-  padding: 120px 20px;
-  background: url('images/paper-texture.jpg') center/cover no-repeat;
-  background-blend-mode: multiply;
-}
-.intro-text {
-  max-width: 700px;
-  margin: auto;
-}
-.intro-text h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2.2em;
-  margin-bottom: 15px;
-  color: #f7e9c5;
-}
-.intro-text p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  color: #f2e7c9;
-  opacity: 0.9;
-}
-.btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 28px;
-  border: 2px solid #f2e7c9;
-  color: #f2e7c9;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.btn:hover {
-  background: #d1a05e;
-  color: #2e1d0d;
-}
-
-/* Ozeroan Vertical Gallery */
-.vertical-gallery {
+.gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  padding: 80px 20px;
-  background: url('images/parchment-texture.jpg') center/cover no-repeat;
-  position: relative;
+  gap: 4rem;
+  padding: 3rem 1rem;
 }
 
-.portrait {
+.image-container {
   position: relative;
-  width: 80%;
-  max-width: 900px;
-  display: flex;
-  align-items: center;
-  background: rgba(255, 250, 240, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 350px;
   overflow: hidden;
-  border-radius: 6px;
-  transition: transform 0.4s ease;
+  transition: all 0.4s ease;
 }
 
-.portrait img {
-  width: 50%;
-  transition: transform 0.4s ease;
-  filter: grayscale(15%) sepia(10%);
+.image-container img {
+  width: 100%;
+  display: block;
+  border: 2px solid #cbb68f;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.5s ease;
 }
 
 .description {
-  width: 50%;
-  background: rgba(58, 42, 29, 0.85);
-  color: #f2e7c9;
-  padding: 30px;
-  text-align: left;
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
   position: absolute;
-  right: 0;
   top: 0;
+  left: 0;
   height: 100%;
+  width: 100%;
+  background: rgba(246, 240, 231, 0.95);
+  color: #3b2b1a;
+  padding: 1.5rem;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  border-left: 3px solid #b14f35;
 }
 
-.description h3 {
-  font-family: 'Cinzel', serif;
-  color: #d1a05e;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.description p {
-  font-size: 1.05em;
-  line-height: 1.7em;
-}
-
-.portrait:hover img {
+.image-container:hover img {
   transform: translateX(-15px);
 }
 
-.portrait:hover .description {
+.image-container:hover .description {
   transform: translateX(0);
 }
 
-
-/* ABOUT */
-.about {
-  padding: 60px 20px;
-  max-width: 800px;
-  margin: auto;
-  text-align: left;
-  line-height: 1.8em;
-}
-.about h2 {
-  font-family: 'Cinzel', serif;
-  color: #d1a05e;
-  margin-top: 25px;
-  margin-bottom: 10px;
+.description h2 {
+  margin-top: 0;
+  color: #5e3b26;
+  font-size: 1.5rem;
 }
 
-/* FOOTER */
 footer {
-  margin-top: 60px;
-  padding: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 0.9em;
-  color: #cbbf9c;
+  text-align: center;
+  padding: 1.5rem;
+  background: #ede3d0;
+  border-top: 2px solid #cbb68f;
+  font-size: 0.9rem;
 }
+
