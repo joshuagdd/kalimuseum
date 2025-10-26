@@ -1,58 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;600&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
 body {
-  margin: 0;
-  font-family: 'Cinzel', serif;
-  background-color: #f6f0e7;
-  background-image: url('images/paper-texture.jpg');
-  background-size: cover;
-  background-repeat: repeat;
-  color: #3b2b1a;
-}
-
-header {
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(145deg, #3b2a1a, #5c4033, #b8996d);
+  background-attachment: fixed;
+  color: #f2e7c9;
   text-align: center;
-  padding: 2rem 1rem;
-  border-bottom: 2px solid #cbb68f;
-  background: rgba(255, 250, 240, 0.9);
+  min-height: 100vh;
 }
 
-h1 {
-  font-size: 2.8rem;
-  color: #5e3b26;
-  margin: 0;
+/* HEADER */
+header {
+  background: rgba(44, 33, 24, 0.85);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4em;
+  color: #f2e7c9;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #8c6b4f;
-  margin-top: 0.2rem;
-  letter-spacing: 2px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1em;
+  color: #d9c28a;
 }
 
 nav {
-  margin-top: 1rem;
+  margin-top: 10px;
 }
-
 nav a {
-  color: #5e3b26;
+  color: #f2e7c9;
   text-decoration: none;
-  margin: 0 1rem;
+  margin: 0 15px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
-
 nav a:hover,
 nav a.active {
-  color: #b14f35;
+  color: #d1a05e;
 }
 
+/* INTRO SECTION */
+.intro {
+  padding: 120px 20px;
+  background: url('images/paper-texture.jpg') center/cover no-repeat;
+  background-blend-mode: multiply;
+}
+.intro-text {
+  max-width: 700px;
+  margin: auto;
+}
+.intro-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #f7e9c5;
+}
+.intro-text p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  color: #f2e7c9;
+  opacity: 0.9;
+}
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  border: 2px solid #f2e7c9;
+  color: #f2e7c9;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #d1a05e;
+  color: #2e1d0d;
+}
+
+/* GALLERY SECTION */
 .gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  padding: 3rem 1rem;
+  padding: 80px 20px;
 }
 
 .image-container {
@@ -66,8 +107,9 @@ nav a.active {
 
 .image-container img {
   width: 350px;
-  border: 2px solid #cbb68f;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transition: transform 0.5s ease;
   z-index: 2;
 }
@@ -76,15 +118,17 @@ nav a.active {
   position: absolute;
   left: 50%;
   transform: translateX(-100%);
-  background: rgba(246, 240, 231, 0.98);
-  border-left: 3px solid #b14f35;
-  color: #3b2b1a;
+  background: rgba(44, 33, 24, 0.95);
+  border-left: 3px solid #d1a05e;
+  color: #f2e7c9;
   padding: 1.5rem;
   width: 300px;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: all 0.5s ease;
+  border-radius: 4px;
   z-index: 1;
+  text-align: left;
 }
 
 .image-container:hover img {
@@ -97,16 +141,44 @@ nav a.active {
 }
 
 .description h2 {
+  font-family: 'Cinzel', serif;
   margin-top: 0;
-  color: #5e3b26;
+  color: #d1a05e;
   font-size: 1.5rem;
 }
-
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #ede3d0;
-  border-top: 2px solid #cbb68f;
-  font-size: 0.9rem;
+.description p {
+  font-size: 0.95rem;
+  line-height: 1.6em;
+  color: #f2e7c9;
 }
+
+/* ABOUT SECTION */
+.about {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+  line-height: 1.8em;
+}
+.about h2 {
+  font-family: 'Cinzel', serif;
+  color: #d1a05e;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.about p {
+  color: #f2e7c9;
+  opacity: 0.9;
+  font-size: 1.05em;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.9em;
+  color: #cbbf9c;
+}
+
 
