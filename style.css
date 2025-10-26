@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(145deg, #3b2a1a, #5c4033, #b8996d);
+  background-attachment: fixed;
+  color: #f2e7c9;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  background: rgba(44, 33, 24, 0.85);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2em;
+  color: #f2e7c9;
+}
+
+.subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1em;
+  color: #d9c28a;
+}
+
+nav {
+  margin-top: 10px;
+}
+nav a {
+  color: #f2e7c9;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+nav a:hover,
+nav a.active {
+  color: #d1a05e;
+}
+
+/* INTRO SECTION */
+.intro {
+  padding: 120px 20px;
+  background: url('images/paper-texture.jpg') center/cover no-repeat;
+  background-blend-mode: multiply;
+}
+.intro-text {
+  max-width: 700px;
+  margin: auto;
+}
+.intro-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #f7e9c5;
+}
+.intro-text p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  color: #f2e7c9;
+  opacity: 0.9;
+}
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  border: 2px solid #f2e7c9;
+  color: #f2e7c9;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #d1a05e;
+  color: #2e1d0d;
+}
+
+/* GALLERY */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 60px 40px;
+}
+.artwork {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(50, 35, 25, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.artwork img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.artwork figcaption {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #f2e7c9;
+  padding: 15px;
+  transition: bottom 0.4s ease;
+}
+.artwork:hover figcaption {
+  bottom: 0;
+}
+.artwork:hover img {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+figcaption h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2em;
+  color: #d1a05e;
+  margin-bottom: 8px;
+}
+
+/* ABOUT */
+.about {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+  line-height: 1.8em;
+}
+.about h2 {
+  font-family: 'Cinzel', serif;
+  color: #d1a05e;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.9em;
+  color: #cbbf9c;
+}
