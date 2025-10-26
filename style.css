@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
 
 body {
-  margin: 0;
+  argin: 0;
   font-family: 'Cinzel', serif;
   background-color: #f6f0e7;
   background-image: url('images/paper-texture.jpg');
