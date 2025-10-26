@@ -103,15 +103,6 @@ nav a:hover, nav a.active {
   opacity: 1;
 }
 
-
-.image-container img {
-  width: 100%;
-  display: block;
-  border: 2px solid #cbb68f;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.5s ease;
-}
-
 .description {
   position: absolute;
   top: 0;
