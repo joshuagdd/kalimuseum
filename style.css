@@ -38,120 +38,102 @@ nav a:hover, nav a.active{color:#d1a05e}
 }
 .btn:hover{background:#d1a05e;color:#2e1d0d}
 
-/* Gallery grid: two columns on wide, one column on small */
+/* --- GALLERY SECTION --- */
 .gallery{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px,1fr));
-  gap:48px;
-  padding:64px 40px;
-  align-items:start;
+  grid-template-columns: repeat(2, 1fr);     /* two per row */
+  gap:60px 70px;
+  padding:80px 60px;
   justify-items:center;
 }
 
-/* image-container holds the image and the hidden description panel
-   container width equals image width so the description slides out precisely */
+/* container wraps image + hidden description */
 .image-container{
-  width: 350px;           /* container width = image width */
-  position: relative;
-  overflow: visible;
-  display:block;
-  transition: all .35s ease;
+  position:relative;
+  width:320px;               /* same as portrait width */
+  overflow:visible;
 }
 
-/* image styling */
+/* make each portrait tall (4:5 ratio look) */
 .image-container img{
   width:100%;
-  height: 360px;
+  height:480px;              /* portrait ratio */
   object-fit:cover;
-  display:block;
-  border-radius:6px;
-  border:2px solid rgba(255,255,255,0.08);
-  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  border-radius:8px;
+  border:2px solid rgba(255,255,255,0.1);
+  box-shadow:0 6px 20px rgba(0,0,0,0.45);
   transition: transform .45s cubic-bezier(.2,.9,.2,1);
   z-index:3;
-  background:#efe6d6;
-  filter: sepia(.12) contrast(.98) saturate(.95);
 }
 
-/* description panel that will slide out from behind the image
-   initial state: placed to the right edge (left:100%) and moved left by its own width
-   -> that places it exactly behind the image (no visible gap)
-*/
+/* description box hidden behind image at start */
 .description{
   position:absolute;
   top:0;
-  left:100%;              /* anchored to container's right edge */
-  width:320px;            /* fixed description width */
+  left:100%;
+  width:300px;               /* panel width */
   height:100%;
-  transform: translateX(-100%); /* hidden behind the image */
-  background: rgba(44,33,24,0.96);
-  border-left: 3px solid #d1a05e;
+  background:rgba(44,33,24,0.96);
+  border-left:3px solid #d1a05e;
   color:#f2e7c9;
-  padding:18px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.45);
-  border-radius:6px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  border-radius:8px;
   opacity:0;
-  transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .25s ease;
-  text-align:left;
+  transform:translateX(-100%); /* hides it directly behind the image */
+  transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .3s ease;
   z-index:2;
 }
 
-/* title + paragraph inside panel */
-.description h2{font-family:'Cinzel',serif;color:#d1a05e;margin:0 0 8px;font-size:1.25rem}
-.description p{margin:0;color:#f2e7c9;line-height:1.55;font-size:0.96rem}
-
-/* HOVER BEHAVIOR: image moves left by EXACTLY the panel width (320px)
-   and the panel translates to 0 so it becomes fully visible at container's right.
-   This produces no gap — they meet edge-to-edge.
-*/
+/* hover animation: image slides left exactly the description width */
 .image-container:hover img{
-  transform: translateX(-320px); /* = description width */
+  transform:translateX(-300px);  /* = description width */
 }
 .image-container:hover .description{
-  transform: translateX(0); /* slides out fully */
+  transform:translateX(0);
   opacity:1;
 }
 
-/* Small screen behavior: stack vertically and show description by default */
-@media (max-width: 780px){
-  .gallery{grid-template-columns: 1fr; padding:40px 18px; gap:36px}
-  .image-container{width:90%; max-width:420px}
-  .image-container img{height:auto}
+/* description text */
+.description h2{
+  font-family:'Cinzel',serif;
+  color:#d1a05e;
+  margin-bottom:10px;
+  font-size:1.25rem;
+}
+.description p{
+  line-height:1.55;
+  font-size:0.95rem;
+}
+
+/* --- MOBILE LAYOUT --- */
+@media (max-width:850px){
+  .gallery{
+    grid-template-columns:1fr;  /* one per row on mobile */
+    padding:40px 24px;
+    gap:40px;
+  }
+  .image-container{
+    width:90%;
+    max-width:380px;
+  }
+  .image-container img{
+    height:auto;
+  }
   .description{
     position:relative;
     left:0;
-    transform: translateX(0);
+    transform:translateX(0);
     width:100%;
     height:auto;
     opacity:1;
-    margin-top:12px;
     border-left:none;
     border-top:3px solid #d1a05e;
-    box-shadow:0 6px 18px rgba(0,0,0,0.32);
+    margin-top:10px;
   }
-  .image-container:hover img{transform:none}
+  .image-container:hover img{
+    transform:none;
+  }
 }
-
-/* About section */
-.about{
-  max-width:900px;
-  margin:40px auto;
-  padding:36px;
-  text-align:left;
-  background: rgba(44,33,24,0.4);
-  border-radius:8px;
-}
-.about h2{font-family:'Cinzel',serif;color:#d1a05e;margin-bottom:12px}
-.about p{color:#f2e7c9;line-height:1.7}
-
-/* Footer */
-footer{
-  text-align:center;
-  padding:26px 12px;
-  color:#cbbf9c;
-  border-top:1px solid rgba(255,255,255,0.08);
-  margin-top:48px;
-}
-
 
 
