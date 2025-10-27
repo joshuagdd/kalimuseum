@@ -38,6 +38,7 @@ header h1 {
 nav {
   margin-top: 10px;
 }
+
 nav a {
   color: #f2e7c9;
   text-decoration: none;
@@ -45,6 +46,7 @@ nav a {
   font-weight: 600;
   transition: color 0.3s ease;
 }
+
 nav a:hover,
 nav a.active {
   color: #d1a05e;
@@ -56,22 +58,26 @@ nav a.active {
   background: url('images/paper-texture.jpg') center/cover no-repeat;
   background-blend-mode: multiply;
 }
+
 .intro-text {
   max-width: 700px;
   margin: auto;
 }
+
 .intro-text h2 {
   font-family: 'Cinzel', serif;
   font-size: 2.2em;
   margin-bottom: 15px;
   color: #f7e9c5;
 }
+
 .intro-text p {
   font-size: 1.1em;
   line-height: 1.7em;
   color: #f2e7c9;
   opacity: 0.9;
 }
+
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -82,6 +88,7 @@ nav a.active {
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .btn:hover {
   background: #d1a05e;
   color: #2e1d0d;
@@ -89,10 +96,10 @@ nav a.active {
 
 /* GALLERY SECTION */
 .gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 4rem;
+  justify-items: center;
   padding: 80px 20px;
 }
 
@@ -100,13 +107,14 @@ nav a.active {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: visible;
   transition: all 0.5s ease;
 }
 
 .image-container img {
   width: 350px;
+  height: auto;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -114,15 +122,17 @@ nav a.active {
   z-index: 2;
 }
 
+/* Description box same height as the image */
 .description {
   position: absolute;
-  left: 50%;
-  transform: translateX(-100%);
+  left: 100%;
+  top: 0;
   background: rgba(44, 33, 24, 0.95);
   border-left: 3px solid #d1a05e;
   color: #f2e7c9;
   padding: 1.5rem;
-  width: 300px;
+  width: 350px;
+  height: 100%;
   box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: all 0.5s ease;
@@ -132,12 +142,12 @@ nav a.active {
 }
 
 .image-container:hover img {
-  transform: translateX(-160px);
+  transform: translateX(-180px);
 }
 
 .image-container:hover .description {
-  transform: translateX(0);
   opacity: 1;
+  transform: translateX(-20px);
 }
 
 .description h2 {
@@ -146,6 +156,7 @@ nav a.active {
   color: #d1a05e;
   font-size: 1.5rem;
 }
+
 .description p {
   font-size: 0.95rem;
   line-height: 1.6em;
@@ -160,12 +171,14 @@ nav a.active {
   text-align: left;
   line-height: 1.8em;
 }
+
 .about h2 {
   font-family: 'Cinzel', serif;
   color: #d1a05e;
   margin-top: 25px;
   margin-bottom: 10px;
 }
+
 .about p {
   color: #f2e7c9;
   opacity: 0.9;
@@ -180,5 +193,6 @@ footer {
   font-size: 0.9em;
   color: #cbbf9c;
 }
+
 
 
