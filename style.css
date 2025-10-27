@@ -1,213 +1,157 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-/* GENERAL STYLES */
-body {
+/* Page base */
+body{
   font-family: 'Lato', sans-serif;
-  background: linear-gradient(145deg, #3b2a1a, #5c4033, #b8996d);
-  background-attachment: fixed;
-  color: #f2e7c9;
-  min-height: 100vh;
+  background: linear-gradient(145deg,#3b2a1a,#5c4033,#b8996d);
+  color:#f2e7c9;
+  min-height:100vh;
+  text-align:center;
 }
 
-/* HEADER */
-header {
-  background: rgba(44, 33, 24, 0.9);
-  padding: 25px 0;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+/* Header */
+header{
+  background:rgba(44,33,24,0.92);
+  padding:20px 16px;
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+header h1{font-family:'Cinzel',serif;font-size:2.4rem;color:#f2e7c9}
+header .subtitle{font-family:'Cinzel',serif;color:#d9c28a;margin-top:6px;font-size:1rem}
+nav{margin-top:10px}
+nav a{color:#f2e7c9;text-decoration:none;margin:0 12px;font-weight:600;transition:color .2s}
+nav a:hover, nav a.active{color:#d1a05e}
+
+/* Intro (index) */
+.intro{
+  padding:100px 20px;
+  background: url('images/paper-texture.jpg') center/cover no-repeat;
+  background-blend-mode:multiply;
+}
+.intro-text{max-width:760px;margin:0 auto}
+.intro-text h2{font-family:'Cinzel',serif;color:#f7e9c5;font-size:2.1rem;margin-bottom:12px}
+.intro-text p{color:#f2e7c9;opacity:0.95;line-height:1.6}
+.btn{
+  display:inline-block;margin-top:18px;padding:10px 22px;border:2px solid #f2e7c9;color:#f2e7c9;border-radius:6px;
+  text-decoration:none;font-weight:700;transition:all .2s;
+}
+.btn:hover{background:#d1a05e;color:#2e1d0d}
+
+/* Gallery grid: two columns on wide, one column on small */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px,1fr));
+  gap:48px;
+  padding:64px 40px;
+  align-items:start;
+  justify-items:center;
 }
 
-header h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 2.5em;
-  color: #f2e7c9;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1em;
-  color: #d1a05e;
-  margin-top: 6px;
-}
-
-nav {
-  margin-top: 15px;
-}
-nav a {
-  color: #f2e7c9;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-nav a:hover,
-nav a.active {
-  color: #d1a05e;
-}
-
-/* INDEX / INTRO SECTION */
-.intro {
-  padding: 100px 20px;
-  text-align: center;
-  background: rgba(44, 33, 24, 0.6);
-  background-image: url('images/paper-texture.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-}
-
-.intro-text {
-  max-width: 700px;
-  margin: auto;
-}
-
-.intro-text h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2.2em;
-  margin-bottom: 15px;
-  color: #f7e9c5;
-}
-
-.intro-text p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  color: #f2e7c9;
-  opacity: 0.9;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 28px;
-  border: 2px solid #f2e7c9;
-  color: #f2e7c9;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: #d1a05e;
-  color: #2e1d0d;
-}
-
-/* GALLERY SECTION */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 4rem;
-  justify-items: center;
-  padding: 80px 40px;
-  background: rgba(50, 35, 25, 0.6);
-}
-
-.image-container {
+/* image-container holds the image and the hidden description panel
+   container width equals image width so the description slides out precisely */
+.image-container{
+  width: 350px;           /* container width = image width */
   position: relative;
-  width: 350px;
   overflow: visible;
-  transition: all 0.5s ease;
+  display:block;
+  transition: all .35s ease;
 }
 
-.image-container img {
-  width: 100%;
-  display: block;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  transition: transform 0.5s ease;
-  z-index: 2;
+/* image styling */
+.image-container img{
+  width:100%;
+  height: 360px;
+  object-fit:cover;
+  display:block;
+  border-radius:6px;
+  border:2px solid rgba(255,255,255,0.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  transition: transform .45s cubic-bezier(.2,.9,.2,1);
+  z-index:3;
+  background:#efe6d6;
+  filter: sepia(.12) contrast(.98) saturate(.95);
 }
 
-/* Description box slides out beside the portrait */
-.description {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: rgba(44, 33, 24, 0.95);
+/* description panel that will slide out from behind the image
+   initial state: placed to the right edge (left:100%) and moved left by its own width
+   -> that places it exactly behind the image (no visible gap)
+*/
+.description{
+  position:absolute;
+  top:0;
+  left:100%;              /* anchored to container's right edge */
+  width:320px;            /* fixed description width */
+  height:100%;
+  transform: translateX(-100%); /* hidden behind the image */
+  background: rgba(44,33,24,0.96);
   border-left: 3px solid #d1a05e;
-  color: #f2e7c9;
-  padding: 1.5rem;
-  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.5s ease;
-  text-align: left;
-  border-radius: 4px;
+  color:#f2e7c9;
+  padding:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.45);
+  border-radius:6px;
+  opacity:0;
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .25s ease;
+  text-align:left;
+  z-index:2;
 }
 
-.image-container:hover img {
-  transform: translateX(-140px);
+/* title + paragraph inside panel */
+.description h2{font-family:'Cinzel',serif;color:#d1a05e;margin:0 0 8px;font-size:1.25rem}
+.description p{margin:0;color:#f2e7c9;line-height:1.55;font-size:0.96rem}
+
+/* HOVER BEHAVIOR: image moves left by EXACTLY the panel width (320px)
+   and the panel translates to 0 so it becomes fully visible at container's right.
+   This produces no gap — they meet edge-to-edge.
+*/
+.image-container:hover img{
+  transform: translateX(-320px); /* = description width */
+}
+.image-container:hover .description{
+  transform: translateX(0); /* slides out fully */
+  opacity:1;
 }
 
-.image-container:hover .description {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.description h2 {
-  font-family: 'Cinzel', serif;
-  color: #d1a05e;
-  margin-top: 0;
-  font-size: 1.4rem;
-}
-
-.description p {
-  font-size: 0.95rem;
-  line-height: 1.6em;
-  color: #f2e7c9;
-}
-
-/* ABOUT PAGE */
-.about {
-  padding: 80px 20px;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.8em;
-  color: #f2e7c9;
-  text-align: left;
-  background: rgba(44, 33, 24, 0.5);
-  border-radius: 8px;
-}
-
-.about h2 {
-  font-family: 'Cinzel', serif;
-  color: #d1a05e;
-  margin-bottom: 10px;
-  margin-top: 25px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 25px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 0.9em;
-  color: #cbbf9c;
-  background: rgba(44, 33, 24, 0.85);
-  margin-top: 60px;
-}
-
-/* RESPONSIVE FIXES */
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: 1fr;
+/* Small screen behavior: stack vertically and show description by default */
+@media (max-width: 780px){
+  .gallery{grid-template-columns: 1fr; padding:40px 18px; gap:36px}
+  .image-container{width:90%; max-width:420px}
+  .image-container img{height:auto}
+  .description{
+    position:relative;
+    left:0;
+    transform: translateX(0);
+    width:100%;
+    height:auto;
+    opacity:1;
+    margin-top:12px;
+    border-left:none;
+    border-top:3px solid #d1a05e;
+    box-shadow:0 6px 18px rgba(0,0,0,0.32);
   }
-
-  .image-container:hover img {
-    transform: translateX(-100px);
-  }
-
-  .description {
-    width: 250px;
-  }
+  .image-container:hover img{transform:none}
 }
+
+/* About section */
+.about{
+  max-width:900px;
+  margin:40px auto;
+  padding:36px;
+  text-align:left;
+  background: rgba(44,33,24,0.4);
+  border-radius:8px;
+}
+.about h2{font-family:'Cinzel',serif;color:#d1a05e;margin-bottom:12px}
+.about p{color:#f2e7c9;line-height:1.7}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:26px 12px;
+  color:#cbbf9c;
+  border-top:1px solid rgba(255,255,255,0.08);
+  margin-top:48px;
+}
+
 
 
