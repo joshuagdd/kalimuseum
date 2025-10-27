@@ -1,113 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legendary Kali: Ozeroan Archives</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Gallery test — Legendary Kali</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#3b2a1a; --bg2:#5c4033; --bg3:#b8996d;
+    --fg: #f2e7c9;
+    --gold:#d1a05e;
+    --img-w: 350px;          /* change portrait width here */
+    --img-h: 480px;          /* change portrait height here */
+    --panel-w: 320px;        /* width of sliding description */
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Lato',sans-serif;
+    min-height:100vh;
+    color:var(--fg);
+    background: linear-gradient(145deg,var(--bg1),var(--bg2),var(--bg3));
+    -webkit-font-smoothing:antialiased;
+    padding:24px;
+  }
+
+  header{ text-align:center; margin-bottom:18px }
+  header h1{font-family:'Cinzel',serif;font-size:28px;color:var(--fg)}
+  header .subtitle{font-family:'Cinzel',serif;color:var(--gold);font-size:14px;margin-top:6px}
+
+  /* GRID: two columns on desktop, 1 on small screens */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:48px 36px;
+    justify-items:center;
+    align-items:start;
+    max-width:1100px;
+    margin: 0 auto;
+    padding: 40px 10px;
+  }
+
+  /* container width = image width; panel sits to the right of container */
+  .image-container{
+    width: var(--img-w);
+    height: var(--img-h);
+    position: relative;
+    overflow: visible; /* allow panel to show outside */
+  }
+
+  /* portrait */
+  .image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display:block;
+    border-radius:8px;
+    border: 2px solid rgba(255,255,255,0.10);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    transition: transform .45s cubic-bezier(.2,.9,.2,1);
+    z-index: 3;
+    background: #efe6d6;
+  }
+
+  /* description panel — anchored to right edge of container */
+  .description{
+    position: absolute;
+    top: 0;
+    left: 100%;                  /* directly to the right of container */
+    width: var(--panel-w);
+    height: 100%;
+    transform: translateX(calc(-1 * var(--panel-w))); /* hide behind image */
+    background: rgba(44,33,24,0.96);
+    border-left: 3px solid var(--gold);
+    padding: 18px;
+    opacity: 0;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    border-radius: 8px;
+    transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .25s ease;
+    z-index: 2;
+    text-align: left;
+  }
+
+  .description h3{ font-family:'Cinzel',serif; color:var(--gold); margin:0 0 8px; font-size:1.15rem }
+  .description p{ margin:0; color:var(--fg); line-height:1.5; font-size:0.95rem }
+
+  /* Hover: move image left exactly by panel width, reveal panel */
+  .image-container:hover img{
+    transform: translateX(calc(-1 * var(--panel-w)));
+  }
+  .image-container:hover .description{
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Responsive: one column, panel stacks below image */
+  @media (max-width:860px){
+    .gallery{ grid-template-columns: 1fr; gap:32px; padding:30px 12px }
+    .image-container{ width: min(92%, 420px); height: auto }
+    .image-container img{ height: auto; aspect-ratio: 2/3; } /* keep portrait feel */
+    .description{
+      position: relative;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transform: translateX(0);
+      opacity: 1;
+      margin-top: 12px;
+      border-left: none;
+      border-top: 3px solid var(--gold);
+      border-radius: 6px;
+    }
+    .image-container:hover img{ transform: none; }
+  }
+
+  /* small visual niceties */
+  .label{ font-size:0.9rem; color:#d9c28a; margin-top:8px; text-align:center }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Legendary Kali</h1>
-    <p class="subtitle">Ozeroan Archives</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="gallery.html" class="active">Archives</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
 
-  <main class="gallery">
-    <section class="artwork">
-      <div class="image-container">
-        <img src="kalipic/rykko.jpg" alt="Character 1">
-        <div class="description">
-          <h2>Rykko Zahl</h2>
-          <p>As the unexpected chosen wielder of a weapon that has been dormant for 500 years, Rykko Zahl faces immense pressure as an entire nation watches, having waited centuries for this moment. Inexperienced and anxious, he strives to prove himself a worthy successor of the Legendary Kali.</p>
-        </div>
-      </div>
+<header>
+  <h1>Legendary Kali</h1>
+  <div class="subtitle">Ozeroan Archives</div>
+</header>
 
-      <div class="image-container">
-        <img src="kalipic/fionah.jpg" alt="Character 2">
-        <div class="description">
-          <h2>Fionah Coaleman</h2>
-          <p>After Alice Coaleman, Fionah became the 87th wielder of the Legendary Scythe. Despite heavy opposition from opposing parties and other rivals. Fortunately, with the help of Satsuna Sapphira and former colonel Emmalyn Koltz, Fionah was able to prove her worth against those who wanted to steal her power.
-</p>
-        </div>
-      </div>
+<main class="gallery">
+  <!-- sample item 1 -->
+  <div class="image-container" tabindex="0">
+    <img src="images/placeholder1.jpg" alt="Portrait 1">
+    <div class="description">
+      <h3>Rykko Zahl</h3>
+      <p>Museum-style archive entry: the quiet inheritor of the Legendary Kali. A restrained figure whose choices shaped the nation's fate.</p>
+    </div>
+  </div>
 
-      <div class="image-container">
-        <img src="kalipic/nikko.jpg" alt="nikko">
-        <div class="description">
-          <h2>Nikko Bingo</h2>
-          <p>Nikko, a soldier in the Barrier Sentinels’ Elite Militia, struggles with a rare genetic disease that heightens his radioactivity, leaving him sickly most of the time. To survive and fight, he relies on the Radiation Conversion Reactor (RadCoRe), a device his father built to convert his hazardous radiation into energy. This energy allows Nikko to unleash powerful blasts, channeling his body’s dangerous radiation into focused offensive attacks.</p>
-        </div>
-      </div>
+  <!-- sample item 2 -->
+  <div class="image-container" tabindex="0">
+    <img src="images/placeholder2.jpg" alt="Portrait 2">
+    <div class="description">
+      <h3>Benedetta Seferiz</h3>
+      <p>Museum-style archive entry: a relentless agent of change. Her portrait bears the marks of ambition and consequence.</p>
+    </div>
+  </div>
 
-  <div class="image-container">
-        <img src="kalipic/david.jpg" alt="david">
-        <div class="description">
-          <h2>David Stunburg</h2>
-          <p>David Stunburg is known for his eagerness and passion, especially when faced with moments of thrill and bravery. After inheriting the Lightning Legendetic, his drive to fight intensifies. But as a Barrier Sentinel, will his quest for justice clash with his duty to defend?</p>
-        </div>
-      </div>
+  <!-- sample item 3 -->
+  <div class="image-container" tabindex="0">
+    <img src="images/placeholder3.jpg" alt="Portrait 3">
+    <div class="description">
+      <h3>Fionah Coaleman</h3>
+      <p>Museum-style archive entry: a stoic guardian whose calm belies the burden she carries as a wielder of ancient power.</p>
+    </div>
+  </div>
 
-  <div class="image-container">
-        <img src="kalipic/annaleigh.jpg" alt="anna">
-        <div class="description">
-          <h2>Annaleigh Flames</h2>
-          <p>Annaleigh wields the Flame Legendetic, a power that allows her to control and create fire. Yet despite possessing this power, she tries to supress herself from using it. Because it reminds her of a childhood memory that she tries to forget.</p>
-        </div>
-      </div>
+  <!-- sample item 4 -->
+  <div class="image-container" tabindex="0">
+    <img src="images/placeholder4.jpg" alt="Portrait 4">
+    <div class="description">
+      <h3>Sierra</h3>
+      <p>Museum-style archive entry: healer and witness — her steady hands held the fragile peace between factions.</p>
+    </div>
+  </div>
+</main>
 
-        <div class="image-container">
-        <img src="kalipic/markus.jpg" alt="markus">
-        <div class="description">
-          <h2>Markus</h2>
-          <p>Once nominated as the Legendary Kali’s wielder, Markus now serves the Elite Militia with steadfast devotion. Even without legendetics, he knows that he won’t fall behind his peers as he approaches every mission with unmatched determination, guided by an unshakable commitment to protecting others and honoring his country.</p>
-        </div>
-      </div>
-
-        <div class="image-container">
-        <img src="kalipic/rebel.jpg" alt="rebel">
-        <div class="description">
-          <h2>Rebel Coaleman</h2>
-          <p>Rebel Coaleman became a Captain in the Barrier Sentinels at just 24 years old. As the establisher of the Elite Militia, his legendary rise to the ranks has been met with both admiration and concern. While his achievements are undeniable, his relentless drive and self-imposed burdens leave many questioning the unseen forces fueling his extraordinary ambition.</p>
-        </div>
-      </div>
-
-        <div class="image-container">
-        <img src="kalipic/emmlyn.jpg" alt="emmalyn">
-        <div class="description">
-          <h2>Emmalyn Koltz</h2>
-          <p>Emmalyn Koltz has served the Civil Guards longer than most can remember, her loyalty to Ozero unquestioned, at least on the surface. Years within the system have shown her how the regime truly operates: the corruption it hides, the truths it buries. Calm and calculating, she keeps her cards close, watching, waiting for the moment when silence can no longer protect what’s right.
-</p>
-        </div>
-      </div>
-
-        <div class="image-container">
-        <img src="kalipic/alice.jpg" alt="alice">
-        <div class="description">
-          <h2>Alice Coaleman</h2>
-          <p>The former wielder of the Legendary Scythe, Alice Coaleman stood as both protector and symbol of Ozero’s ideals. Her strength was matched only by her compassion, and the mark she left endures long after her passing. Between the comrades who once fought by her side and the children she left behind, her legacy continues to ignite the hearts of those who fight for truth and justice.
-</p>
-        </div>
-      </div>
-
-        <div class="image-container">
-        <img src="kalipic/satsuna.jpg" alt="satsuna">
-        <div class="description">
-          <h2>Satsuna Sapphira</h2>
-          <p>Satsuna Sapphira is known among the masses as the maid who cracked a conspiracy and retrieved the Legendary Kali. 10 years later, now that this legendary weapon has finally chosen its wielder through Rykko Zahl, everyone begs the question: Where is the woman who made all of this possible?
-</p>
-        </div>
-      </div>
-      
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Ozeroan Archives Exhibit
-  </footer>
+<footer style="text-align:center;margin-top:28px;color:#cbbf9c">
+  © 2025 Ozeroan Archives
+</footer>
 </body>
 </html>
+
